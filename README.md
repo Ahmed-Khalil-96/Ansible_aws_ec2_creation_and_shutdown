@@ -50,12 +50,13 @@ Before running the playbooks, ensure your control node has the following require
 
 ## 🔑 Configuration & Security
 
-Sensitive infrastructure variables (such as `aws_access_key` and `aws_secret_key`) are encrypted inside `group_vars/all/pass.yml`. 
+### Passwordless SSH Setup
+To enable passwordless authentication, ensure your local SSH public key (`~/.ssh/id_rsa.pub` or similar) is correctly mapped to the `key_name` parameter within your configuration variables. Ansible leverages AWS key pairs to authorize access automatically without prompt challenges.
 
 ### Editing Encrypted Secrets
-To update your AWS access credentials securely, run:
+Sensitive infrastructure variables (such as `aws_access_key` and `aws_secret_key`) are encrypted inside `group_vars/all/vault.yml`. To update your AWS access credentials securely, run:
 ```bash
-ansible-vault edit group_vars/all/pass.yml --vault-password-file vault.pass
+ansible-vault edit group_vars/all/pass.yml
 ```
 
 ---
