@@ -7,6 +7,7 @@ This repository contains an Ansible automation framework designed to provision, 
 ## 🚀 Features
 
 - **Multi-OS Orchestration:** Provisions 3 EC2 instances simultaneously (2 Ubuntu Nodes, 1 Amazon Linux Node).
+- **Passwordless SSH Authentication:** Automatically injects and configures public keys during the infrastructure lifecycle, enabling seamless, passwordless management from the control node.
 - **Modular Architecture:** Utilizes structured Ansible Roles to cleanly separate infrastructure provisioning from target configuration tasks.
 - **Secure Secret Management:** Integrates Ansible Vault to encrypt and safeguard sensitive AWS access keys and session tokens.
 - **Dynamic State Management:** Includes a dedicated automation playbook to safely target and shut down specific infrastructure components (e.g., stopping only the Ubuntu environments).
@@ -51,7 +52,7 @@ Before running the playbooks, ensure your control node has the following require
 ## 🔑 Configuration & Security
 
 ### Passwordless SSH Setup
-To enable passwordless authentication, ensure your local SSH public key (`~/.ssh/id_rsa.pub` or similar) is correctly mapped to the `key_name` parameter within your configuration variables. Ansible leverages AWS key pairs to authorize access automatically without prompt challenges.
+To enable passwordless authentication, ensure your local SSH public key (`~/.ssh/id_rsa.pub` or similar) is correctly mapped to the `key_name` parameter within your configuration variables or the authorized_keys in (`~/.ssh/authorized_keys) in all managed nodes. Ansible leverages AWS key pairs to authorize access automatically without prompt challenges.
 
 ### Editing Encrypted Secrets
 Sensitive infrastructure variables (such as `aws_access_key` and `aws_secret_key`) are encrypted inside `group_vars/all/vault.yml`. To update your AWS access credentials securely, run:
