@@ -43,8 +43,13 @@ Before running the playbooks, ensure your control node has the following require
    ansible-galaxy collection install amazon.aws
    ```
 2. **Python Dependencies:**
+   First, you need python3
    ```bash
-   pip install boto3 botocore
+   apt install python3
+   ```
+   Then install Boto3
+   ```bash
+   pip install boto3 | apt install python3-boto3
    ```
 
 ---
