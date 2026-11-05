@@ -1,0 +1,6 @@
+---
+ - name: Create 3 ec2 instances as 2 Ubuntu ec2s and 1 AWS_linux ec2
+   hosts: localhost
+   connection: local
+   roles:
+     - ec2s

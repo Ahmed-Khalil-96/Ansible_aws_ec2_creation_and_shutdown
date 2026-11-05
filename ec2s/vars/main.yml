@@ -1,0 +1,8 @@
+#SPDX-License-Identifier: MIT-0
+---
+# vars file for ec2s
+instance_type: t3.micro
+region: eu-north-1
+image_id_1: "ami-0705384c0b33c194c"
+image_id_2: "ami-0705384c0b33c194c"
+image_id_3: "ami-08643f8d76c29f875"

@@ -1,0 +1,21 @@
+#SPDX-License-Identifier: MIT-0
+---
+# tasks file for ec2s
+  - name: start an Ubuntu instance number 1 with a public IP address
+    amazon.aws.ec2_instance:
+      name: "{{ item.name  }}"
+      key_name: "Ahmed"
+      # vpc_subnet_id: subnet-013744e41e8088axx
+      instance_type: "{{ instance_type }}"
+      security_group: "{{ security_group }}"
+      region: "{{ region }}"
+      aws_access_key: "{{aws_access_key}}"  # From vault as defined
+      aws_secret_key: "{{aws_secret_key}}"  # From vault as defined      
+      network:
+        assign_public_ip: true
+      image_id: "{{ item.image }}" 
+
+    loop:
+      - { image: "resolve:ssm:/aws/service/canonical/ubuntu/server/24.04/stable/current/amd64/hvm/ebs-gp3/ami-id", name: "Ubuntu1" }
+      - { image: "resolve:ssm:/aws/service/canonical/ubuntu/server/24.04/stable/current/amd64/hvm/ebs-gp3/ami-id", name: "Ubuntu2" }
+      - { image: "resolve:ssm:/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-x86_64", name: "AWS_Linux" }
