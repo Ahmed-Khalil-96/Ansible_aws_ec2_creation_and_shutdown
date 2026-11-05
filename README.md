@@ -49,7 +49,7 @@ Before running the playbooks, ensure your control node has the following require
    ```
    Then install Boto3
    ```bash
-   pip install boto3 | apt install python3-boto3
+   pip install boto3 || apt install python3-boto3
    ```
 
 ---
